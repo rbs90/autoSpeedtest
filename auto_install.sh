@@ -1,14 +1,14 @@
 #!/bin/bash
 echo "=== Auto-Speedtest Installer ==="
 echo "Installiere Vorraussetzungen..."
-sudo apt -qq update
-sudo apt -qq install gnuplot speedtest-cli apache2 php7.0
+sudo apt update
+sudo apt -y install gnuplot speedtest-cli apache2 php7.0
 
 echo "Download von github..."
 cd /tmp/
 wget -q https://github.com/rbs90/autoSpeedtest/archive/master.zip
 mkdir -p /home/pi/speedtest/
-unzip /tmp/master.zip -d /home/pi/speedtest/
+unzip -o /tmp/master.zip -d /home/pi/speedtest/
 
 echo "Erstelle Cronjob (automatisierter Aufruf)"
 crontab -l | { cat; echo "3,33 * * * * cd /home/pi/speedtest/ && ./auto_speedtest.sh >> speedtest_log"; } | crontab -

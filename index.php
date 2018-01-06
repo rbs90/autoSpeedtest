@@ -3,6 +3,7 @@
     <meta http-equiv="refresh" content="300">
 </head>
 <body>
+<h1>Geschwindigkeitsverlauf</h1>
     <?php
     $images = array_reverse(glob("*.png"));
 

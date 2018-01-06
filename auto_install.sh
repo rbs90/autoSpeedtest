@@ -2,9 +2,7 @@
 echo "=== Auto-Speedtest Installer ==="
 echo "Installiere Vorraussetzungen..."
 sudo apt -qq update
-sudo apt -qq install gnuplot speedtest-cli lighttpd php5-common php-cgi php5
-sudo lighty-enable-mod fastcgi-php
-sudo service lighttpd restart
+sudo apt -qq install gnuplot speedtest-cli apache2 php7.0
 
 echo "Download von github..."
 cd /tmp/
@@ -18,9 +16,9 @@ crontab -l | { cat; echo "5,35 * * * * cd /home/pi/speedtest/ && ./plot_speed.sh
 crontab -l | { cat; echo "10 0 * * * cd /home/pi/speedtest/ && ./speed_rotate.sh"; } | crontab -
 
 echo "Erstelle Webserver-Verzeichnis und kopiere index.php..."
-mkdir -p /var/www/html/speed/
-cp /home/pi/speedtest/index.php /var/www/html/speed/
-chmod 775 /var/www/html/speed/ -R
-sudo useradd -G www-data pi 
+sudo mkdir -p /var/www/html/speed/
+sudo cp /home/pi/speedtest/index.php /var/www/html/speed/
+sudo chmod 775 /var/www/html/speed/ -R
+sudo usermod -a -G www-data pi 
 
 echo "Fertig."

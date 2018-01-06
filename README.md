@@ -1,14 +1,20 @@
 # autoSpeedtest
 
-## Vorraussetzungen Debian
+## Automatisches Install-Script
 ```
-sudo apt install gnuplot speedtest-cli
+curl https://raw.githubusercontent.com/rbs90/autoSpeedtest/master/auto_install.sh > install.sh && chmod +x install.sh && ./install.sh
+```
+## Manuelle Installation
+
+### Vorraussetzungen Debian
+```
+sudo apt install gnuplot speedtest-cli apache2 php7.0
 ```
 
-## Installation des Skriptes
+### Installation des Skriptes
 Download des Repos als zip, entpacken nach /home/pi/speedtest/
 
-## Automatisch alle 15 Minuten aufrufen
+### Automatisch alle 15 Minuten aufrufen
 ```
 crontab -e
 ```

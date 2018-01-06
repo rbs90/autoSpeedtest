@@ -1,7 +1,6 @@
 #!/bin/bash
 echo "=== Auto-Speedtest Installer ==="
 echo "Installiere Vorraussetzungen..."
-sudo -i
 apt update
 apt -y install gnuplot speedtest-cli apache2 php7.0
 
@@ -21,8 +20,8 @@ crontab -l | { cat; echo "5,35 * * * * cd /root/speedtest/ && ./plot_speed.sh"; 
 crontab -l | { cat; echo "10 0 * * * cd /root/speedtest/ && ./speed_rotate.sh"; } | crontab -
 
 echo "Erstelle Webserver-Verzeichnis und kopiere index.php..."
-sudo mkdir -p /var/www/html/speed/
-sudo cp /root/speedtest/index.php /var/www/html/speed/
-sudo chmod 775 /var/www/html/speed/ -R
+mkdir -p /var/www/html/speed/
+cp /root/speedtest/index.php /var/www/html/speed/
+chmod 775 /var/www/html/speed/ -R
 
 echo "Fertig."

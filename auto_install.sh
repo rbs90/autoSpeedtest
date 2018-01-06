@@ -11,6 +11,8 @@ mkdir -p /home/pi/speedtest/
 mkdir -p /tmp/speed/
 unzip -o /tmp/master.zip -d /tmp/speed/
 mv /tmp/speed/autoSpeedtest-master/* /home/pi/speedtest/
+chmod +x /home/pi/speedtest/*.sh
+chmod +x /home/pi/speedtest/*.gp
 
 echo "Erstelle Cronjob (automatisierter Aufruf)"
 crontab -l | { cat; echo "3,33 * * * * cd /home/pi/speedtest/ && ./auto_speedtest.sh >> speedtest_log"; } | crontab -
